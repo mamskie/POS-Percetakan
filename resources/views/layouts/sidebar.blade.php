@@ -33,7 +33,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="{{ route('kategori.index') }}"><i class="fa fa-tags"></i>
-                                sKategori </a></li>
+                                Kategori </a></li>
                         <li><a href="{{ route('produk.index') }}"><i class="fa fa-industry"></i>
                                 Produk</a></li>
                         <li><a href="{{ route('member.index') }}"><i class="fa fa-hourglass-o"></i>
