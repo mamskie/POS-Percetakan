@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kategori;
-use App\Models\Member;
+use App\Models\mentahan;
 use App\Models\Pembelian;
 use App\Models\Pengeluaran;
 use App\Models\Penjualan;
@@ -18,7 +18,7 @@ class DashboardController extends Controller
         $kategori = Kategori::count();
         $produk = Produk::count();
         $supplier = Supplier::count();
-        $member = Member::count();
+        $mentahan = mentahan::count();
 
         $tanggal_awal = date('Y-m-01');
         $tanggal_akhir = date('Y-m-d');
@@ -42,9 +42,9 @@ class DashboardController extends Controller
         $tanggal_awal = date('Y-m-01');
 
         if (auth()->user()->level == 1) {
-            return view('admin.dashboard', compact('kategori', 'produk', 'supplier', 'member', 'tanggal_awal', 'tanggal_akhir', 'data_tanggal', 'data_pendapatan'));
+            return view('admin.dashboard', compact('kategori', 'produk', 'supplier', 'mentahan', 'tanggal_awal', 'tanggal_akhir', 'data_tanggal', 'data_pendapatan'));
         } else if (auth()->user()->level == 2) {
-            return view('kepalaStaff.dashboard', compact('kategori', 'produk', 'supplier', 'member', 'tanggal_awal', 'tanggal_akhir', 'data_tanggal', 'data_pendapatan'));
+            return view('kepalaStaff.dashboard', compact('kategori', 'produk', 'supplier', 'mentahan', 'tanggal_awal', 'tanggal_akhir', 'data_tanggal', 'data_pendapatan'));
         }
         else {
             return view('kasir.dashboard');

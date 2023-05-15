@@ -9,9 +9,10 @@
                 $word .= $w[0];
             }
         @endphp
-        <span class="logo-mini">{{ $word }}</span>
+        <span class="logo-mini"><img src="{{ asset('/img/UIN1.png') }}" alt="Logo"></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>{{ $setting->nama_perusahaan }}</b></span>
+        <span class="logo-lg"><img src="{{ asset('/img/uin.png') }}"
+                alt="Logo"><b>{{ $setting->nama_perusahaan }}</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">

@@ -36,7 +36,7 @@
                                 Kategori </a></li>
                         <li><a href="{{ route('produk.index') }}"><i class="fa fa-industry"></i>
                                 Produk</a></li>
-                        <li><a href="{{ route('member.index') }}"><i class="fa fa-hourglass-o"></i>
+                        <li><a href="{{ route('mentahan.index') }}"><i class="fa fa-hourglass-o"></i>
                                 Barang Mentah</a></li>
                         <li><a href="{{ route('supplier.index') }}"><i class="fa fa-hourglass-3"></i>
                                 Barang Setengah Jadi </a></li>
