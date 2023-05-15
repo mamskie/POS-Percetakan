@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Member extends Model
+class mentahan extends Model
 {
     use HasFactory;
 
-    protected $table = 'member';
-    protected $primaryKey = 'id_member';
+    protected $table = 'mentahan';
+    protected $primaryKey = 'id_mentahan';
     protected $guarded = [];
 }

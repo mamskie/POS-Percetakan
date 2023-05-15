@@ -13,12 +13,12 @@ class BuatMemberTable extends Migration
      */
     public function up()
     {
-        Schema::create('member', function (Blueprint $table) {
+        Schema::create('mentahan', function (Blueprint $table) {
             $table->increments('id_member');
+            $table->unsignedInteger('id_kategori');
             $table->string('kode_member')->unique();
             $table->string('nama');
-            $table->text('alamat')->nullable();
-            $table->string('telepon');
+            $table->text('jumlah')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class BuatMemberTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('member');
+        Schema::dropIfExists('mentahan');
     }
 }
