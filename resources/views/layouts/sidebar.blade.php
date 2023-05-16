@@ -71,13 +71,13 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{ route('laporan.index') }}"><i class="fa fa-file-archive-o"></i>
+                        <li><a href="{{ route('LaporanInventory.index') }}"><i class="fa fa-file-archive-o"></i>
                                 Laporan Inventory</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-file-pdf-o"></i>
+                        <li><a href="{{ route('LaporanPengeluaran.index') }}"><i class="fa fa-file-pdf-o"></i>
                                 Laporan Pengeluaran</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-file-excel-o"></i>
+                        <li><a href="{{ route('laporan.index') }}"><i class="fa fa-file-excel-o"></i>
                                 Laporan Transaksi</a>
                         </li>
                     </ul>
