@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-    Daftar SetengahJadi
+    Daftar Supplier
 @endsection
 
 @section('breadcrumb')
     @parent
-    <li class="active">Daftar SetengahJadi</li>
+    <li class="active">Daftar Supplier</li>
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
         <div class="col-lg-12">
             <div class="box">
                 <div class="box-header with-border">
-                    <button onclick="addForm('{{ route('SetengahJadi.store') }}')" class="btn btn-success btn-xs btn-flat"><i
+                    <button onclick="addForm('{{ route('supplier.store') }}')" class="btn btn-success btn-xs btn-flat"><i
                             class="fa fa-plus-circle"></i> Tambah</button>
                 </div>
                 <div class="box-body table-responsive">
@@ -22,8 +22,8 @@
                         <thead>
                             <th width="5%">No</th>
                             <th>Nama</th>
-                            <th>jumlah</th>
-                            <th>bahan</th>
+                            <th>Telepon</th>
+                            <th>Alamat</th>
                             <th width="15%"><i class="fa fa-cog"></i></th>
                         </thead>
                     </table>
@@ -32,7 +32,7 @@
         </div>
     </div>
 
-    @includeIf('SetengahJadi.form')
+    @includeIf('supplier.form')
 @endsection
 
 @push('scripts')
@@ -46,7 +46,7 @@
                 serverSide: true,
                 autoWidth: false,
                 ajax: {
-                    url: '{{ route('SetengahJadi.data') }}',
+                    url: '{{ route('supplier.data') }}',
                 },
                 columns: [{
                         data: 'DT_RowIndex',
@@ -57,10 +57,10 @@
                         data: 'nama'
                     },
                     {
-                        data: 'jumlah'
+                        data: 'telepon'
                     },
                     {
-                        data: 'bahan'
+                        data: 'alamat'
                     },
                     {
                         data: 'aksi',
@@ -87,7 +87,7 @@
 
         function addForm(url) {
             $('#modal-form').modal('show');
-            $('#modal-form .modal-title').text('Tambah SetengahJadi');
+            $('#modal-form .modal-title').text('Tambah Supplier');
 
             $('#modal-form form')[0].reset();
             $('#modal-form form').attr('action', url);
@@ -97,7 +97,7 @@
 
         function editForm(url) {
             $('#modal-form').modal('show');
-            $('#modal-form .modal-title').text('Edit SetengahJadi');
+            $('#modal-form .modal-title').text('Edit Supplier');
 
             $('#modal-form form')[0].reset();
             $('#modal-form form').attr('action', url);
@@ -107,8 +107,8 @@
             $.get(url)
                 .done((response) => {
                     $('#modal-form [name=nama]').val(response.nama);
-                    $('#modal-form [name=jumlah]').val(response.jumlah);
-                    $('#modal-form [name=bahan]').val(response.bahan);
+                    $('#modal-form [name=telepon]').val(response.telepon);
+                    $('#modal-form [name=alamat]').val(response.alamat);
                 })
                 .fail((errors) => {
                     alert('Tidak dapat menampilkan data');

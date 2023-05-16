@@ -3,27 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\setengahJadi;
+use App\Models\Supplier;
 
-class setengahJadiController extends Controller
+class SupplierController extends Controller
 {
     public function index()
     {
-        return view('setengahJadi.index');
+        return view('supplier.index');
     }
 
     public function data()
     {
-        $setengahJadi = setengahJadi::orderBy('id_setengahJadi', 'desc')->get();
+        $supplier = Supplier::orderBy('id_supplier', 'desc')->get();
 
         return datatables()
-            ->of($setengahJadi)
+            ->of($supplier)
             ->addIndexColumn()
-            ->addColumn('aksi', function ($setengahJadi) {
+            ->addColumn('aksi', function ($supplier) {
                 return '
                 <div class="btn-group">
-                    <button type="button" onclick="editForm(`'. route('setengahJadi.update', $setengahJadi->id_setengahJadi) .'`)" class="btn btn-xs btn-info btn-flat"><i class="fa fa-pencil"></i></button>
-                    <button type="button" onclick="deleteData(`'. route('setengahJadi.destroy', $setengahJadi->id_setengahJadi) .'`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i></button>
+                    <button type="button" onclick="editForm(`'. route('supplier.update', $supplier->id_supplier) .'`)" class="btn btn-xs btn-info btn-flat"><i class="fa fa-pencil"></i></button>
+                    <button type="button" onclick="deleteData(`'. route('supplier.destroy', $supplier->id_supplier) .'`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i></button>
                 </div>
                 ';
             })
@@ -49,7 +49,7 @@ class setengahJadiController extends Controller
      */
     public function store(Request $request)
     {
-        $setengahJadi = setengahJadi::create($request->all());
+        $supplier = Supplier::create($request->all());
 
         return response()->json('Data berhasil disimpan', 200);
     }
@@ -62,9 +62,9 @@ class setengahJadiController extends Controller
      */
     public function show($id)
     {
-        $setengahJadi = setengahJadi::find($id);
+        $supplier = Supplier::find($id);
 
-        return response()->json($setengahJadi);
+        return response()->json($supplier);
     }
 
     /**
@@ -87,7 +87,7 @@ class setengahJadiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $setengahJadi = setengahJadi::find($id)->update($request->all());
+        $supplier = Supplier::find($id)->update($request->all());
 
         return response()->json('Data berhasil disimpan', 200);
     }
@@ -100,7 +100,7 @@ class setengahJadiController extends Controller
      */
     public function destroy($id)
     {
-        $setengahJadi = setengahJadi::find($id)->delete();
+        $supplier = Supplier::find($id)->delete();
 
         return response(null, 204);
     }

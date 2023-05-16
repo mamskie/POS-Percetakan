@@ -38,7 +38,7 @@
                                 Produk</a></li>
                         <li><a href="{{ route('mentahan.index') }}"><i class="fa fa-hourglass-o"></i>
                                 Barang Mentah</a></li>
-                        <li><a href="{{ route('SetengahJadi.index') }}"><i class="fa fa-hourglass-3"></i>
+                        <li><a href="{{ route('supplier.index') }}"><i class="fa fa-hourglass-3"></i>
                                 Barang Setengah Jadi </a></li>
                     </ul>
                 </li>
