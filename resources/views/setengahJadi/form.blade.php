@@ -28,7 +28,8 @@
                     <div class="form-group row">
                         <label for="jumlah" class="col-lg-2 col-lg-offset-1 control-label">Jumlah</label>
                         <div class="col-lg-6">
-                            <textarea name="jumlah" id="jumlah" rows="3" class="form-control"></textarea>
+                            <input type="number" name="jumlah" id="jumlah" rows="3"
+                                class="form-control"></input>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
