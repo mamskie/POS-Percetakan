@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +8,6 @@
 
     <link rel="stylesheet" href="{{ asset('/AdminLTE-2/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
 </head>
-
 <body>
     <h3 class="text-center">Laporan Pendapatan</h3>
     <h4 class="text-center">
@@ -25,6 +23,7 @@
                 <th>Tanggal</th>
                 <th>Penjualan</th>
                 <th>Pembelian</th>
+                <th>Pengeluaran</th>
                 <th>Pendapatan</th>
             </tr>
         </thead>
@@ -39,5 +38,4 @@
         </tbody>
     </table>
 </body>
-
 </html>
