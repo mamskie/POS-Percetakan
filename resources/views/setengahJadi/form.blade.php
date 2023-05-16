@@ -19,16 +19,16 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="telepon" class="col-lg-2 col-lg-offset-1 control-label">Telepon</label>
+                        <label for="bahan" class="col-lg-2 col-lg-offset-1 control-label">Bahan</label>
                         <div class="col-lg-6">
-                            <input type="text" name="telepon" id="telepon" class="form-control" required>
+                            <input type="text" name="bahan" id="bahan" class="form-control" required>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="alamat" class="col-lg-2 col-lg-offset-1 control-label">Alamat</label>
+                        <label for="jumlah" class="col-lg-2 col-lg-offset-1 control-label">Jumlah</label>
                         <div class="col-lg-6">
-                            <textarea name="alamat" id="alamat" rows="3" class="form-control"></textarea>
+                            <textarea name="jumlah" id="jumlah" rows="3" class="form-control"></textarea>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
