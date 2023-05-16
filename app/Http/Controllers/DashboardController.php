@@ -8,7 +8,7 @@ use App\Models\Pembelian;
 use App\Models\Pengeluaran;
 use App\Models\Penjualan;
 use App\Models\Produk;
-use App\Models\Supplier;
+use App\Models\SetengahJadi;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -17,7 +17,7 @@ class DashboardController extends Controller
     {
         $kategori = Kategori::count();
         $produk = Produk::count();
-        $supplier = Supplier::count();
+        $SetengahJadi = SetengahJadi::count();
         $mentahan = mentahan::count();
 
         $tanggal_awal = date('Y-m-01');
@@ -42,9 +42,9 @@ class DashboardController extends Controller
         $tanggal_awal = date('Y-m-01');
 
         if (auth()->user()->level == 1) {
-            return view('admin.dashboard', compact('kategori', 'produk', 'supplier', 'mentahan', 'tanggal_awal', 'tanggal_akhir', 'data_tanggal', 'data_pendapatan'));
+            return view('admin.dashboard', compact('kategori', 'produk', 'SetengahJadi', 'mentahan', 'tanggal_awal', 'tanggal_akhir', 'data_tanggal', 'data_pendapatan'));
         } else if (auth()->user()->level == 2) {
-            return view('kepalaStaff.dashboard', compact('kategori', 'produk', 'supplier', 'mentahan', 'tanggal_awal', 'tanggal_akhir', 'data_tanggal', 'data_pendapatan'));
+            return view('kepalaStaff.dashboard', compact('kategori', 'produk', 'SetengahJadi', 'mentahan', 'tanggal_awal', 'tanggal_akhir', 'data_tanggal', 'data_pendapatan'));
         }
         else {
             return view('kasir.dashboard');

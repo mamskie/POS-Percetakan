@@ -12,7 +12,7 @@ use App\Http\Controllers\{
     PenjualanController,
     PenjualanDetailController,
     SettingController,
-    SupplierController,
+    setengahJadiController,
     UserController,
 };
 use Illuminate\Support\Facades\Route;
@@ -48,8 +48,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/mentahan/cetak-mentahan', [mentahanController::class, 'cetakmentahan'])->name('mentahan.cetak_mentahan');
         Route::resource('/mentahan', mentahanController::class);
 
-        Route::get('/supplier/data', [SupplierController::class, 'data'])->name('supplier.data');
-        Route::resource('/supplier', SupplierController::class);
+        Route::get('/setengahJadi/data', [setengahJadiController::class, 'data'])->name('setengahJadi.data');
+        Route::resource('/setengahJadi', setengahJadiController::class);
 
         Route::get('/pengeluaran/data', [PengeluaranController::class, 'data'])->name('pengeluaran.data');
         Route::resource('/pengeluaran', PengeluaranController::class);
