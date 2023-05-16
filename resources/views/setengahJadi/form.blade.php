@@ -21,7 +21,13 @@
                     <div class="form-group row">
                         <label for="bahan" class="col-lg-2 col-lg-offset-1 control-label">Bahan</label>
                         <div class="col-lg-6">
-                            <input type="text" name="bahan" id="bahan" class="form-control" required>
+                            <select name="id_mentahan" id="id_mentahan" class="form-control" required>
+                                <option value="">Pilih Bahan Mentah</option>
+                                @foreach ($mentahan as $key => $item)
+                                    <option value="{{ $key }}">{{ $item }}</option>
+                                @endforeach
+                            </select>
+                            {{-- <input type="text" name="bahan" id="bahan" class="form-control" required> --}}
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
