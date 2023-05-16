@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-    Daftar mentahan
+    Bahan Mentah
 @endsection
 
 @section('breadcrumb')
     @parent
-    <li class="active">Daftar mentahan</li>
+    <li class="active">Bahan Mentah</li>
 @endsection
 
 @section('content')
@@ -70,7 +70,7 @@
                         data: 'kode_mentahan'
                     },
                     {
-                        data: 'nama'
+                        data: 'nama_bahan'
                     },
                     {
                         data: 'nama_kategori'

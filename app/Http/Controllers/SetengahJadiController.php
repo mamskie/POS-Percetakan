@@ -4,17 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\setengahJadi;
+use App\Models\mentahan;
 
 class SetengahJadiController extends Controller
 {
     public function index()
     {
-        return view('setengahJadi.index');
+        $mentahan = mentahan::all()->pluck('nama_bahan', 'id_mentahan');
+
+        return view('setengahJadi.index', compact('mentahan'));
     }
 
     public function data()
     {
-        $setengahJadi = setengahJadi::orderBy('id_setengahJadi', 'desc')->get();
+        $setengahJadi = setengahJadi::leftJoin('mentahan', 'mentahan.id_mentahan', 'setengahJadi.id_mentahan')
+        ->select('setengahJadi.*', 'nama_bahan')
+        ->get();
+        // $setengahJadi = setengahJadi::orderBy('id_setengahJadi', 'desc')->get();
 
         return datatables()
             ->of($setengahJadi)

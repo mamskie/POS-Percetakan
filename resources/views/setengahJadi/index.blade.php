@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-    Daftar setengahJadi
+    Bahan Setengah Jadi
 @endsection
 
 @section('breadcrumb')
     @parent
-    <li class="active">Daftar setengahJadi</li>
+    <li class="active">Bahab Setengah Jadi</li>
 @endsection
 
 @section('content')
@@ -57,7 +57,7 @@
                         data: 'nama'
                     },
                     {
-                        data: 'bahan'
+                        data: 'nama_bahan'
                     },
                     {
                         data: 'jumlah'
