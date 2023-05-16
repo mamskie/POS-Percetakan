@@ -64,14 +64,14 @@
             <!-- small box -->
             <div class="small-box bg-red">
                 <div class="inner">
-                    <h3>{{ $supplier }}</h3>
+                    <h3>{{ $SetengahJadi }}</h3>
 
-                    <p>Total Supplier</p>
+                    <p>Total SetengahJadi</p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-truck"></i>
                 </div>
-                <a href="{{ route('supplier.index') }}" class="small-box-footer">Lihat <i
+                <a href="{{ route('SetengahJadi.index') }}" class="small-box-footer">Lihat <i
                         class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
