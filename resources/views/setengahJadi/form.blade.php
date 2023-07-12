@@ -24,7 +24,7 @@
                             <select name="id_mentahan" id="id_mentahan" class="form-control" required>
                                 <option value="">Pilih Bahan Mentah</option>
                                 @foreach ($mentahan as $key => $item)
-                                    <option value="{{ $key }}">{{ $item }}</option>
+                                <option value="{{ $key }}">{{ $item }}</option>
                                 @endforeach
                             </select>
                             {{-- <input type="text" name="bahan" id="bahan" class="form-control" required> --}}
@@ -32,10 +32,16 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="jumlah" class="col-lg-2 col-lg-offset-1 control-label">Jumlah</label>
+                        <label for="jumlah" class="col-lg-2 col-lg-offset-1 control-label">Jumlah Bahan Mentah</label>
                         <div class="col-lg-6">
-                            <input type="number" name="jumlah" id="jumlah" rows="3"
-                                class="form-control"></input>
+                            <input type="number" name="mentah" id="mentah" rows="3" class="form-control"></input>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="jumlah" class="col-lg-2 col-lg-offset-1 control-label">Hasil Proses</label>
+                        <div class="col-lg-6">
+                            <input type="number" name="jumlah" id="jumlah" rows="3" class="form-control"></input>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>

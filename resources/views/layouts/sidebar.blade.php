@@ -139,11 +139,8 @@
                     <i class="fa fa-cart-arrow-down"></i> <span>Transaksi Baru</span>
                 </a>
             </li>
-            <li>
-                <a href="">
-                    <i class="fa fa-cart-arrow-down"></i> <span>Transaksi</span>
-                </a>
-            </li>
+            <li><a href="{{ route('penjualan.index') }}"><i class="fa fa-money"></i>
+                    <span>Penjualan </span></a></li>
         </ul>
         @endif
         </ul>

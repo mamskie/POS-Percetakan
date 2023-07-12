@@ -17,6 +17,7 @@ use App\Http\Controllers\{
     LaporanInventoryController,
     LaporanPengeluaranController,
 };
+use App\Models\setengahJadi;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,6 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/mentahan', mentahanController::class);
 
         Route::get('/setengahJadi/data', [setengahJadiController::class, 'data'])->name('setengahJadi.data');
+        Route::put('/setengahJadi/{id}/stok', [setengahJadiController::class, 'updateStok'])->name('setengahJadi.updateStok');
         Route::resource('/setengahJadi', setengahJadiController::class);
 
         Route::get('/pengeluaran/data', [PengeluaranController::class, 'data'])->name('pengeluaran.data');
@@ -79,6 +81,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/transaksi/nota-kecil', [PenjualanController::class, 'notaKecil'])->name('transaksi.nota_kecil');
         Route::get('/transaksi/nota-besar', [PenjualanController::class, 'notaBesar'])->name('transaksi.nota_besar');
 
+        Route::get('/penjualan', [PenjualanController::class, 'index'])->name('penjualan.index');
+
         Route::get('/transaksi/{id}/data', [PenjualanDetailController::class, 'data'])->name('transaksi.data');
         Route::get('/transaksi/loadform/{diskon}/{total}/{diterima}', [PenjualanDetailController::class, 'loadForm'])->name('transaksi.load_form');
         Route::resource('/transaksi', PenjualanDetailController::class)
@@ -90,10 +94,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/laporan/data/{awal}/{akhir}', [LaporanController::class, 'data'])->name('laporan.data');
         Route::get('/laporan/pdf/{awal}/{akhir}', [LaporanController::class, 'exportPDF'])->name('laporan.export_pdf');
 
-        Route::get('/laporanInventory',[LaporanInventoryController::class,'index'] )->name('LaporanInventory.index');
+        Route::get('/laporanInventory', [LaporanInventoryController::class, 'index'])->name('LaporanInventory.index');
         // Route::get('/laporanInventory',[LaporanInventoryController::class,'exportPDF'] )->name('LaporanInventory.exportpdf');
 
-        Route::get('/laporanPengeluaran',[LaporanPengeluaranController::class,'index'] )->name('LaporanPengeluaran.index');
+        Route::get('/laporanPengeluaran', [LaporanPengeluaranController::class, 'index'])->name('LaporanPengeluaran.index');
 
         Route::get('/user/data', [UserController::class, 'data'])->name('user.data');
         Route::resource('/user', UserController::class);
@@ -102,7 +106,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/setting/first', [SettingController::class, 'show'])->name('setting.show');
         Route::post('/setting', [SettingController::class, 'update'])->name('setting.update');
     });
- 
+
     Route::group(['middleware' => 'level:1,2,3'], function () {
         Route::get('/profil', [UserController::class, 'profil'])->name('user.profil');
         Route::post('/profil', [UserController::class, 'updateProfil'])->name('user.update_profil');

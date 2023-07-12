@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form">
+<div class="modal fade" id="modal-form2" tabindex="-1" role="dialog" aria-labelledby="modal-form">
     <div class="modal-dialog modal-lg" role="document">
         <form action="" method="post" class="form-horizontal">
             @csrf
@@ -12,29 +12,22 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label for="nama_bahan" class="col-lg-2 col-lg-offset-1 control-label">Nama</label>
+                        <label for="nama" class="col-lg-2 col-lg-offset-1 control-label">Nama</label>
                         <div class="col-lg-6">
-                            <input type="text" name="nama_bahan" id="nama_bahan" class="form-control" required
-                                autofocus>
+                            <input type="text" name="nama" id="nama" class="form-control" required autofocus>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="id_kategori" class="col-lg-2 col-lg-offset-1 control-label">Kategori</label>
+                        <label for="bahan" class="col-lg-2 col-lg-offset-1 control-label">Bahan</label>
                         <div class="col-lg-6">
-                            <select name="id_kategori" id="id_kategori" class="form-control" required>
-                                <option value="">Pilih Kategori</option>
-                                @foreach ($kategori as $key => $item)
+                            <select name="id_mentahan" id="id_mentahan" class="form-control" required>
+                                <option value="">Pilih Bahan Mentah</option>
+                                @foreach ($mentahan as $key => $item)
                                 <option value="{{ $key }}">{{ $item }}</option>
                                 @endforeach
                             </select>
-                            <span class="help-block with-errors"></span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="jumlah" class="col-lg-2 col-lg-offset-1 control-label">Tambah Stok</label>
-                        <div class="col-lg-6">
-                            <input name="jumlah" type="number" id="jumlah" rows="3" class="form-control"></input>
+                            {{-- <input type="text" name="bahan" id="bahan" class="form-control" required> --}}
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
