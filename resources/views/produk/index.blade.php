@@ -19,8 +19,8 @@ Daftar Produk
                             class="fa fa-plus-circle"></i> Tambah</button>
                     <button onclick="deleteSelected('{{ route('produk.delete_selected') }}')"
                         class="btn btn-danger btn-xs btn-flat"><i class="fa fa-trash"></i> Hapus</button>
-                    <button onclick="cetakBarcode('{{ route('produk.cetak_barcode') }}')"
-                        class="btn btn-info btn-xs btn-flat"><i class="fa fa-barcode"></i> Cetak Barcode</button>
+                    {{-- <button onclick="cetakBarcode('{{ route('produk.cetak_barcode') }}')"
+                        class="btn btn-info btn-xs btn-flat"><i class="fa fa-barcode"></i> Cetak Barcode</button> --}}
                 </div>
             </div>
             <div class="box-body table-responsive">
