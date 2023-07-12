@@ -20,6 +20,8 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{ asset('/AdminLTE-2/dist/css/skins/_all-skins.min.css') }}">
+    {{-- toastr --}}
+    <link rel="stylesheet" href="{{ asset('toastr/toastr.css') }}">
     <!-- DataTables -->
     <link rel="stylesheet"
         href="{{ asset('/AdminLTE-2/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
@@ -54,7 +56,7 @@
                 </h1>
                 <ol class="breadcrumb">
                     @section('breadcrumb')
-                        <li><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i> Home</a></li>
                     @show
                 </ol>
             </section>
@@ -88,6 +90,8 @@
     <!-- Validator -->
     <script src="{{ asset('js/validator.min.js') }}"></script>
 
+    {{-- toastr --}}
+    <script src="{{ asset('toastr/toastr.js') }}"></script>
     <script>
         function preview(selector, temporaryFile, width = 200) {
             $(selector).empty();
