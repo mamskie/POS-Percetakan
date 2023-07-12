@@ -97,6 +97,13 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#" onclick="toggleLightMode()" id="lightModeButton"
+                        class="{{ $lightMode ? 'light-mode' : '' }}">
+                        <i class="fa fa-toggle-on"></i>
+                        <span id="modeText">{{ $lightMode ? 'Switch Dark Mode' : 'Switch Light Mode' }}</span>
+                    </a>
+                </li>
             @elseif (auth()->user()->level == 2)
                 <li class="treeview">
                     <a href="#">

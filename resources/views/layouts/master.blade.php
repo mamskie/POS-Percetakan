@@ -69,6 +69,34 @@
         </div>
         <!-- /.content-wrapper -->
 
+        <script>
+            function toggleLightMode() {
+                const body = document.querySelector('body');
+                const existingClasses = body.classList;
+
+                // Check if the light mode is currently enabled
+                const isLightMode = existingClasses.contains('skin-green-light');
+
+                // Toggle the value of $lightMode
+                const newLightMode = !isLightMode;
+
+                // Apply the new skin class based on the light mode value
+                body.classList.remove(isLightMode ? 'skin-green-light' : 'skin-green');
+                body.classList.add(newLightMode ? 'skin-green-light' : 'skin-green');
+
+                // Update the $lightMode variable (optional)
+                $lightMode = newLightMode;
+
+                // Toggle the light-mode class on the button
+                const lightModeButton = document.getElementById('lightModeButton');
+                lightModeButton.classList.toggle('light-mode');
+
+                // Update the mode text
+                const modeText = document.getElementById('modeText');
+                modeText.textContent = newLightMode ? 'Switch Dark Mode' : 'Switch Light Mode';
+            }
+        </script>
+
         @includeIf('layouts.footer')
     </div>
     <!-- ./wrapper -->

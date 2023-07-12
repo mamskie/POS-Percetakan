@@ -16,6 +16,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $lightMode = true; 
         $kategori = Kategori::count();
         $produk = Produk::count();
         $SetengahJadi = SetengahJadi::count();
@@ -46,7 +47,7 @@ class DashboardController extends Controller
         $tanggal_awal = date('Y-m-01');
 
         if (auth()->user()->level == 1) {
-            return view('admin.dashboard', compact('kategori', 'produk', 'SetengahJadi', 'mentahan', 'tanggal_awal', 'tanggal_akhir', 'data_tanggal', 'data_pendapatan'));
+            return view('admin.dashboard', compact('kategori', 'produk', 'SetengahJadi', 'mentahan', 'tanggal_awal', 'tanggal_akhir', 'data_tanggal', 'data_pendapatan','lightMode'));
         } else if (auth()->user()->level == 2) {
             return view('kepalaStaff.dashboard', compact('user', 'produk', 'penjualan', 'pengeluaran', 'tanggal_awal', 'tanggal_akhir', 'data_tanggal', 'data_pendapatan'));
         } else {
