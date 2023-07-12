@@ -36,6 +36,10 @@
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
     @stack('css')
+    <?php
+    // Determine the current mode (true for light mode, false for dark mode)
+    $lightMode = true; // Set the value based on your logic for determining the mode
+    ?>
 </head>
 
 <body class="hold-transition skin-green sidebar-mini">
