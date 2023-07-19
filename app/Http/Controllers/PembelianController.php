@@ -6,15 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\Pembelian;
 use App\Models\PembelianDetail;
 use App\Models\Produk;
-use App\Models\Supplier;
+use App\Models\mentahan;
 
 class PembelianController extends Controller
 {
     public function index()
     {
-        $supplier = Supplier::orderBy('nama')->get();
-
-        return view('pembelian.index', compact('supplier'));
+        $bahan = mentahan::orderBy('id_mentahan')->get();
+        return view('pembelian.index', compact('bahan'));
     }
 
     public function data()
@@ -36,20 +35,20 @@ class PembelianController extends Controller
             ->addColumn('tanggal', function ($pembelian) {
                 return tanggal_indonesia($pembelian->created_at, false);
             })
-            ->addColumn('supplier', function ($pembelian) {
-                return $pembelian->supplier->nama;
-            })
+            // ->addColumn('supplier', function ($pembelian) {
+            //     return $pembelian->supplier->nama;
+            // })
             ->editColumn('diskon', function ($pembelian) {
                 return $pembelian->diskon . '%';
             })
             ->addColumn('aksi', function ($pembelian) {
                 return '
                 <div class="btn-group">
-                    <button onclick="showDetail(`'. route('pembelian.show', $pembelian->id_pembelian) .'`)" class="btn btn-xs btn-info btn-flat"><i class="fa fa-eye"></i></button>
                     <button onclick="deleteData(`'. route('pembelian.destroy', $pembelian->id_pembelian) .'`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i></button>
                 </div>
                 ';
             })
+            // <button onclick="showDetail(`'. route('pembelian.show', $pembelian->id_pembelian) .'`)" class="btn btn-xs btn-info btn-flat"><i class="fa fa-eye"></i></button>
             ->rawColumns(['aksi'])
             ->make(true);
     }
@@ -57,7 +56,7 @@ class PembelianController extends Controller
     public function create($id)
     {
         $pembelian = new Pembelian();
-        $pembelian->id_supplier = $id;
+        // $pembelian->id_supplier = $id;
         $pembelian->total_item  = 0;
         $pembelian->total_harga = 0;
         $pembelian->diskon      = 0;
@@ -65,7 +64,7 @@ class PembelianController extends Controller
         $pembelian->save();
 
         session(['id_pembelian' => $pembelian->id_pembelian]);
-        session(['id_supplier' => $pembelian->id_supplier]);
+        // session(['id_supplier' => $pembelian->id_supplier]);
 
         return redirect()->route('pembelian_detail.index');
     }

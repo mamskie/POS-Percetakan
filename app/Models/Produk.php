@@ -12,4 +12,13 @@ class Produk extends Model
     protected $table = 'produk';
     protected $primaryKey = 'id_produk';
     protected $guarded = [];
+
+    public function setengahJadi()
+    {
+        return $this->belongsTo(setengahJadi::class, 'id_setengahJadi', 'nama');
+    }
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class, 'id_kategori', 'nama_kategori');
+    }
 }

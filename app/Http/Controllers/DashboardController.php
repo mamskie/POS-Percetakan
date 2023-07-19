@@ -9,6 +9,7 @@ use App\Models\Pengeluaran;
 use App\Models\Penjualan;
 use App\Models\Produk;
 use App\Models\SetengahJadi;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -19,6 +20,9 @@ class DashboardController extends Controller
         $produk = Produk::count();
         $SetengahJadi = SetengahJadi::count();
         $mentahan = mentahan::count();
+        $pengeluaran = Pengeluaran::count();
+        $penjualan = Penjualan::count() - 1;
+        $user = User::where('level', '!=', 1)->count();
 
         $tanggal_awal = date('Y-m-01');
         $tanggal_akhir = date('Y-m-d');
@@ -44,10 +48,9 @@ class DashboardController extends Controller
         if (auth()->user()->level == 1) {
             return view('admin.dashboard', compact('kategori', 'produk', 'SetengahJadi', 'mentahan', 'tanggal_awal', 'tanggal_akhir', 'data_tanggal', 'data_pendapatan'));
         } else if (auth()->user()->level == 2) {
-            return view('kepalaStaff.dashboard', compact('kategori', 'produk', 'SetengahJadi', 'mentahan', 'tanggal_awal', 'tanggal_akhir', 'data_tanggal', 'data_pendapatan'));
-        }
-        else {
-            return view('kasir.dashboard');
+            return view('kepalaStaff.dashboard', compact('user', 'produk', 'penjualan', 'pengeluaran', 'tanggal_awal', 'tanggal_akhir', 'data_tanggal', 'data_pendapatan'));
+        } else {
+            return view('kasir.dashboard', compact('pengeluaran', 'penjualan',  'tanggal_awal', 'tanggal_akhir', 'data_tanggal', 'data_pendapatan'));
         }
     }
 }

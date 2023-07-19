@@ -4,17 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\setengahJadi;
+use App\Models\mentahan;
 
 class SetengahJadiController extends Controller
 {
     public function index()
     {
-        return view('setengahJadi.index');
+        $mentahan = mentahan::all()->pluck('nama_bahan', 'id_mentahan');
+
+        return view('setengahJadi.index', compact('mentahan'));
     }
 
     public function data()
     {
-        $setengahJadi = setengahJadi::orderBy('id_setengahJadi', 'desc')->get();
+        $setengahJadi = setengahJadi::leftJoin('mentahan', 'mentahan.id_mentahan', 'setengahJadi.id_mentahan')
+            ->select('setengahJadi.*', 'nama_bahan')
+            ->get();
+        // $setengahJadi = setengahJadi::orderBy('id_setengahJadi', 'desc')->get();
 
         return datatables()
             ->of($setengahJadi)
@@ -22,8 +28,8 @@ class SetengahJadiController extends Controller
             ->addColumn('aksi', function ($setengahJadi) {
                 return '
                 <div class="btn-group">
-                    <button type="button" onclick="editForm(`'. route('setengahJadi.update', $setengahJadi->id_setengahJadi) .'`)" class="btn btn-xs btn-info btn-flat"><i class="fa fa-pencil"></i></button>
-                    <button type="button" onclick="deleteData(`'. route('setengahJadi.destroy', $setengahJadi->id_setengahJadi) .'`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i></button>
+                    <button type="button" onclick="editForm(`' . route('setengahJadi.update', $setengahJadi->id_setengahJadi) . '`)" class="btn btn-xs btn-info btn-flat"><i class="fa fa-pencil"></i></button>
+                    <button type="button" onclick="deleteData(`' . route('setengahJadi.destroy', $setengahJadi->id_setengahJadi) . '`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i></button>
                 </div>
                 ';
             })
@@ -87,7 +93,30 @@ class SetengahJadiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $setengahJadi = setengahJadi::find($id)->update($request->all());
+        // $setengahJadi = setengahJadi::find($id)->update($request->all());
+        $setengahJadi = setengahJadi::find($id);
+
+        $setengahJadi->nama = $request->nama;
+        $setengahJadi->jumlah += $request->jumlah;
+        $setengahJadi->update();
+
+        $mentahan = mentahan::find($setengahJadi->id_mentahan);
+        $mentahan->jumlah -= $request->mentah;
+        $mentahan->update();
+
+        return response()->json('Data berhasil disimpan', 200);
+    }
+    public function updateStok(Request $request, $id)
+    {
+        $setengahJadi = setengahJadi::find($id);
+
+        $setengahJadi->nama = $request->nama;
+        $setengahJadi->jumlah += $request->jumlah;
+        $setengahJadi->update();
+
+        $mentahan = Mentahan::find($setengahJadi->id_mentahan);
+        $mentahan->jumlah -= $request->mentahan;
+        $mentahan->update();
 
         return response()->json('Data berhasil disimpan', 200);
     }

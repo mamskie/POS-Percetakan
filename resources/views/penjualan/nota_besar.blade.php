@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,22 +12,27 @@
             /* font-family: Arial, Helvetica, sans-serif; */
             font-size: 14px;
         }
+
         table.data td,
         table.data th {
             border: 1px solid #ccc;
             padding: 5px;
         }
+
         table.data {
             border-collapse: collapse;
         }
+
         .text-center {
             text-align: center;
         }
+
         .text-right {
             text-align: right;
         }
     </style>
 </head>
+
 <body>
     <table width="100%">
         <tr>
@@ -41,8 +47,8 @@
             <td>: {{ tanggal_indonesia(date('Y-m-d')) }}</td>
         </tr>
         <tr>
-            <td>Kode Member</td>
-            <td>: {{ $penjualan->member->kode_member ?? '' }}</td>
+            <td>Kode mentahan</td>
+            <td>: {{ $penjualan->mentahan->kode_mentahan ?? '' }}</td>
         </tr>
     </table>
 
@@ -61,7 +67,7 @@
         <tbody>
             @foreach ($detail as $key => $item)
                 <tr>
-                    <td class="text-center">{{ $key+1 }}</td>
+                    <td class="text-center">{{ $key + 1 }}</td>
                     <td>{{ $item->produk->nama_produk }}</td>
                     <td>{{ $item->produk->kode_produk }}</td>
                     <td class="text-right">{{ format_uang($item->harga_jual) }}</td>
@@ -107,4 +113,5 @@
         </tr>
     </table>
 </body>
+
 </html>

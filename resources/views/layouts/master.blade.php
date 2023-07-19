@@ -20,6 +20,8 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{ asset('/AdminLTE-2/dist/css/skins/_all-skins.min.css') }}">
+    {{-- toastr --}}
+    <link rel="stylesheet" href="{{ asset('toastr/toastr.css') }}">
     <!-- DataTables -->
     <link rel="stylesheet"
         href="{{ asset('/AdminLTE-2/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
@@ -36,6 +38,10 @@
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
     @stack('css')
+    <?php
+    // Determine the current mode (true for light mode, false for dark mode)
+    $lightMode = true; // Set the value based on your logic for determining the mode
+    ?>
 </head>
 
 <body class="hold-transition skin-green sidebar-mini">
@@ -54,7 +60,7 @@
                 </h1>
                 <ol class="breadcrumb">
                     @section('breadcrumb')
-                        <li><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i> Home</a></li>
                     @show
                 </ol>
             </section>
@@ -68,6 +74,34 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
+
+        <script>
+            function toggleLightMode() {
+                const body = document.querySelector('body');
+                const existingClasses = body.classList;
+
+                // Check if the light mode is currently enabled
+                const isLightMode = existingClasses.contains('skin-green-light');
+
+                // Toggle the value of $lightMode
+                const newLightMode = !isLightMode;
+
+                // Apply the new skin class based on the light mode value
+                body.classList.remove(isLightMode ? 'skin-green-light' : 'skin-green');
+                body.classList.add(newLightMode ? 'skin-green-light' : 'skin-green');
+
+                // Update the $lightMode variable (optional)
+                $lightMode = newLightMode;
+
+                // Toggle the light-mode class on the button
+                const lightModeButton = document.getElementById('lightModeButton');
+                lightModeButton.classList.toggle('light-mode');
+
+                // Update the mode text
+                const modeText = document.getElementById('modeText');
+                modeText.textContent = newLightMode ? 'Switch Dark Mode' : 'Switch Light Mode';
+            }
+        </script>
 
         @includeIf('layouts.footer')
     </div>
@@ -88,6 +122,8 @@
     <!-- Validator -->
     <script src="{{ asset('js/validator.min.js') }}"></script>
 
+    {{-- toastr --}}
+    <script src="{{ asset('toastr/toastr.js') }}"></script>
     <script>
         function preview(selector, temporaryFile, width = 200) {
             $(selector).empty();

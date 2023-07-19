@@ -14,7 +14,8 @@
                     <div class="form-group row">
                         <label for="nama_produk" class="col-lg-2 col-lg-offset-1 control-label">Nama</label>
                         <div class="col-lg-6">
-                            <input type="text" name="nama_produk" id="nama_produk" class="form-control" required autofocus>
+                            <input type="text" name="nama_produk" id="nama_produk" class="form-control" required
+                                autofocus>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
@@ -24,6 +25,18 @@
                             <select name="id_kategori" id="id_kategori" class="form-control" required>
                                 <option value="">Pilih Kategori</option>
                                 @foreach ($kategori as $key => $item)
+                                <option value="{{ $key }}">{{ $item }}</option>
+                                @endforeach
+                            </select>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="id_setengahJadi" class="col-lg-2 col-lg-offset-1 control-label">Bahan</label>
+                        <div class="col-lg-6">
+                            <select name="id_setengahJadi" id="id_setengahJadi" class="form-control" required>
+                                <option value="">Pilih Bahan</option>
+                                @foreach ($setengahJadi as $key => $item)
                                 <option value="{{ $key }}">{{ $item }}</option>
                                 @endforeach
                             </select>
@@ -58,17 +71,18 @@
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    {{-- <div class="form-group row">
                         <label for="stok" class="col-lg-2 col-lg-offset-1 control-label">Stok</label>
                         <div class="col-lg-6">
                             <input type="number" name="stok" id="stok" class="form-control" required value="0">
                             <span class="help-block with-errors"></span>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-sm btn-flat btn-primary"><i class="fa fa-save"></i> Simpan</button>
-                    <button type="button" class="btn btn-sm btn-flat btn-warning" data-dismiss="modal"><i class="fa fa-arrow-circle-left"></i> Batal</button>
+                    <button type="button" class="btn btn-sm btn-flat btn-warning" data-dismiss="modal"><i
+                            class="fa fa-arrow-circle-left"></i> Batal</button>
                 </div>
             </div>
         </form>

@@ -71,13 +71,13 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{ route('laporan.index') }}"><i class="fa fa-file-archive-o"></i>
+                        <li><a href="{{ route('LaporanInventory.index') }}"><i class="fa fa-file-archive-o"></i>
                                 Laporan Inventory</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-file-pdf-o"></i>
+                        <li><a href="{{ route('LaporanPengeluaran.index') }}"><i class="fa fa-file-pdf-o"></i>
                                 Laporan Pengeluaran</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-file-excel-o"></i>
+                        <li><a href="{{ route('laporan.index') }}"><i class="fa fa-file-excel-o"></i>
                                 Laporan Transaksi</a>
                         </li>
                     </ul>
@@ -97,6 +97,13 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#" onclick="toggleLightMode()" id="lightModeButton"
+                        class="{{ $lightMode ? 'light-mode' : '' }}">
+                        <i class="fa fa-toggle-on"></i>
+                        <span id="modeText">{{ $lightMode ? 'Switch Dark Mode' : 'Switch Light Mode' }}</span>
+                    </a>
+                </li>
             @elseif (auth()->user()->level == 2)
                 <li class="treeview">
                     <a href="#">
@@ -107,13 +114,13 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{ route('laporan.index') }}"><i class="fa fa-file-archive-o"></i>
+                        <li><a href="{{ route('LaporanInventory.index') }}"><i class="fa fa-file-archive-o"></i>
                                 Laporan Inventory</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-file-pdf-o"></i>
+                        <li><a href="{{ route('LaporanPengeluaran.index') }}"><i class="fa fa-file-pdf-o"></i>
                                 Laporan Pengeluaran</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-file-excel-o"></i>
+                        <li><a href="{{ route('laporan.index') }}"><i class="fa fa-file-excel-o"></i>
                                 Laporan Transaksi</a>
                         </li>
                     </ul>
@@ -139,7 +146,13 @@
                         <i class="fa fa-cart-arrow-down"></i> <span>Transaksi Baru</span>
                     </a>
                 </li>
-            @endif
+                <li>
+                    <a href="">
+                        <i class="fa fa-cart-arrow-down"></i> <span>Transaksi</span>
+                    </a>
+                </li>
+        </ul>
+        @endif
         </ul>
     </section>
     <!-- /.sidebar -->
